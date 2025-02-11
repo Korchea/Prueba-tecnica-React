@@ -37,28 +37,26 @@ export const TodoBoard: React.FC = () => {
 
     const handleDeleteTask = async (id: string) => {
         try {
-            console.log('task', tasks);
             setTasks(prevTasks => prevTasks.filter(tasks => tasks.response.id !== id));
         } catch (error) {
             console.error("Error al eliminar la tarea:", error);
         }
     };
 
-    const handleEditTask = async (updatedTask: Task) => {
-        try {
-            
-            console.log('update', updatedTask);
-            setTasks(prevTasks => prevTasks.map(tasks => (tasks.id === updatedTask.id ? updatedTask : tasks)));
-        } catch (error) {
-            console.error("Error al actualizar la tarea:", error);
-        }
+    const handleUpdateTask = (id: string, updatedTodo: { title: string; description: string; completed: boolean }) => {
+        setTasks(prevTasks => {
+            const newTasks = prevTasks.map(task =>
+                task.id === id ? { ...task, ...updatedTodo } : task
+            );
+            return newTasks;
+        });
     };
-    
+
 
     return (
         <div className="todo-board">
             {tasks.map((task, index) => (
-                <TodoItem key={task.id || index} todo={task.response} onDelete={handleDeleteTask} onEdit={handleEditTask} />
+                <TodoItem key={task.id || index} todo={task.response} onDelete={handleDeleteTask} onUpdate={handleUpdateTask} />
             ))}
 
             <Card className="todo-item add-task-button" onClick={handleAddTask}>

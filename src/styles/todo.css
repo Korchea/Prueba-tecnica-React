@@ -1,0 +1,65 @@
+.todo-item {
+    width: 280px;
+    height: auto; /* Permite que la tarjeta crezca según el contenido */
+    min-height: 280px; /* Asegura que no se haga muy pequeña */
+    border-radius: 16px;
+    box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.3);
+    background-color: yellow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Asegura que el contenido se distribuya desde arriba */
+    text-align: center;
+    position: relative;
+    padding: 50px 20px 20px; /* Se aumentó el padding-top para evitar que el texto se suba */
+    transition: transform 0.2s ease-in-out;
+}
+
+.todo-item:hover, .add-task-button:hover {
+    transform: scale(1.1);
+}
+
+.todo-board {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Mayor separación entre tarjetas */
+}
+
+
+.delete-button {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: darkred;
+}
+
+.edit-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px; /* Tamaño ajustable */
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.icon-button {
+    width: 20px; /* Ajusta el tamaño del ícono */
+    height: 20px;
+}
